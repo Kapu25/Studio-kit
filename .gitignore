@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.claude/state/
+.venv/
+# your own private material never belongs in this repo
+projects/
+jobs/
+brand/logo/
+brand/fonts/
+homeschool/
+USAGE-LOG.md
+PROJECT-MEMORY.md
+.env
