@@ -84,6 +84,22 @@ Open the folder in Claude Code. It reads `CLAUDE.md`, loads the agents, skills a
 - To add a rule, tell Claude "save this to memory" and let it write the file and index line.
 - Create your own `channels/` (style guides), `workflows/` (run orders), `brand/` and `projects/` folders. The agents expect them but this repository does not ship them. `projects/`, `brand/logo/` and your private notes are in `.gitignore`.
 
+## Using it with Codex
+
+The kit is built for Claude Code, so Codex can use part of it but not the automation.
+
+**Carries over**
+- `AGENTS.md` is a copy of `CLAUDE.md`, so Codex reads the same rules. Keep the two files identical. Codex does not follow the `@memory/MEMORY.md` import, so ask it to read `memory/MEMORY.md` first.
+- `memory/` is plain Markdown rule files that Codex can read.
+- `tools/` are plain Python scripts, and the 9 skill folders under `.claude/skills/` are plain instruction files that work as reference material.
+
+**Does not carry over**
+- The 38 agent files in `.claude/agents/`, with their pinned Opus/Sonnet models and effort levels, which are Claude-specific.
+- The hooks in `.claude/hooks/` (the escalation router and the memory reminder), which are wired through `.claude/settings.json`. Codex ignores both.
+- The one-agent-at-a-time supervisor routing, which depends on Claude Code's Agent tool.
+
+So Codex gets the rules and skill notes, but not the escalation and memory automation.
+
 ## Built-in guardrails
 
 Nothing is published, uploaded, scheduled or paid for without your explicit yes. Output stays `DRAFT-NOT-APPROVED` until you say the literal word "Approved". Footage needs a licence record in `sources.json`, and video downloaders are not used.
